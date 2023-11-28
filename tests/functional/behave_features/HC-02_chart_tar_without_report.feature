@@ -15,7 +15,7 @@ Feature: Chart tarball submission without report
             | vendor_type  | vendor    | chart_path                   |
             | partners     | hashicorp | tests/data/vault-0.17.0.tgz  |
         
-        @redhat @smoke @full
+        @redhat @smoke @full @jose
         Examples:
             | vendor_type  | vendor    | chart_path                   |
             | redhat       | redhat    | tests/data/vault-0.17.0.tgz  |

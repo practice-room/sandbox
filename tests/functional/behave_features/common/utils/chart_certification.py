@@ -193,8 +193,9 @@ vendor:
     ):
         """checks the gh-pages branch for an update to the lock file"""
         logging.info("checking for package locks")
-        logging.debug(f"original branch was {old_branch}")
         old_branch = self.repo.active_branch.name
+        logging.debug(f"original branch was {old_branch}")
+
 
         pages_branch = f"{base_branch}-gh-pages"
         logging.debug(f"fetching pages branch: {pages_branch}")

@@ -185,6 +185,43 @@ vendor:
                 "-f",
             )
 
+    def check_chart_lock(
+            self,
+            base_branch,
+            chart_name,
+            lock_file="chart-locks.json",
+    ):
+        """checks the gh-pages branch for an update to the lock file"""
+        logging.info("checking for package locks")
+        old_branch = self.repo.active_branch.name
+        logging.debug(f"original branch was {old_branch}")
+
+
+        pages_branch = f"{base_branch}-gh-pages"
+        logging.debug(f"fetching pages branch: {pages_branch}")
+        self.repo.git.fetch(
+            f"https://github.com/{self.secrets.test_repo}.git",
+            "{0}:{0}".format(pages_branch),
+            "-f",
+        )
+
+        self.repo.git.checkout(f"{pages_branch}")
+
+        with open(lock_file, "r") as fd:
+            try:
+                locks = json.loads(fd)
+            except Exception as err:
+                logging.error(f"Unable to open the lock file at path {lock_file} in branch {pages_branch}")
+                return False
+
+        if chart_name not in locks["packages"]:
+            raise AssertionError(f"entry '{chart_name}' expected in chart locks file {lock_file} in branch {pages_branch} but not found.")
+
+        logging.debug("TODO: need to add more concrete checks like pathing match")
+
+        # Return to the original branch
+        self.repo.git.checkout(old_branch)
+
     def check_index_yaml(
         self,
         base_branch,
@@ -916,6 +953,13 @@ class ChartCertificationE2ETestSingle(ChartCertificationE2ETest):
         else:
             raise AssertionError(
                 f"Was expecting '{expect_message}' in the comment {complete_comment}"
+            )
+
+    def check_chart_lock(self):
+        for chart in self.test_charts:
+            super().check_chart_lock(
+                    self.secrets.base_branch,
+                    chart.chart_name,
             )
 
     def check_index_yaml(self, check_provider_type=False):

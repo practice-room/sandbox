@@ -302,6 +302,10 @@ def release_is_published(context):
     )
 
 
+@then("a chart lock entry is added to the chart lock file")
+def chart_locks_updated(context):
+    context.workflow_test.check_chart_lock()
+
 @then("a release is published with corresponding report, tarball, prov and key")
 def release_is_published_for_signed_chart(context):
     context.workflow_test.check_release_result(

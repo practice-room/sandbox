@@ -954,7 +954,7 @@ class ChartCertificationE2ETestSingle(ChartCertificationE2ETest):
                 f"Was expecting '{expect_message}' in the comment {complete_comment}"
             )
 
-    def check_chart_lock(self):
+    def check_chart_lock(self, context):
         for chart in self.test_charts:
             super().check_chart_lock(
                     self.secrets.base_branch,

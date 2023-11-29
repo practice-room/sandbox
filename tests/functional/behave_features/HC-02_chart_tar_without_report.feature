@@ -8,7 +8,8 @@ Feature: Chart tarball submission without report
         When the user sends a pull request with the chart
         Then the user sees the pull request is merged
         And the index.yaml file is updated with an entry for the submitted chart
-        And a release is published with corresponding report and chart tarball
+	And a release is published with corresponding report and chart tarball
+	And a chart lock entry is added to the chart lock file
 
         @partners @full
         Examples:

@@ -36,5 +36,8 @@ MANIFEST
 # Virtual Envs
 venv.*/
 
+# Development Files
+github-output.txt
+
 # For Pyenv users
 .python-version

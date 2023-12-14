@@ -1,0 +1,10 @@
+chart:
+  name: my-chart-basename-a113d4cb8b504d50ba2fdd87d9c6de9f
+  shortDescription: Test chart for testing chart submission workflows.
+publicPgpKey: null
+providerDelivery: false
+users:
+- githubUsername: komish
+vendor:
+  label: redhat
+  name: Red Hat

@@ -55,7 +55,6 @@ class WorkflowRepoManager:
 
         The branch must exist locally before this is called, as it is not
         created by this method.
-
         Args:
             remote_name: the name of the remote in organization/repository format.
             branch_name: the branch to push.

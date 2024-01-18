@@ -1,124 +1,106 @@
-# This document is created to guide us in case we need to regenerate the test data
-## It also captures traceability between tests and how the test data is generated
+# Regenerating Test Data
+This document is created to guide us in case we need to regenerate the test data.
+It also captures traceability between tests and how the test data is generated.
 
-### HC-01, HC-02, HC-03, HC-05, HC-07, HC-08, HC-12, HC-14, HC-16
+Run everything from the root directory of the repository
 
-```
-chart-verifier verify https://github.com/openshift-helm-charts/development/blob/main/tests/data/vault-0.17.0.tgz?raw=true > report.yaml
-Copy report.yaml to tests/data/common/partner/
+## HC-01, HC-02, HC-03, HC-05, HC-07, HC-08, HC-12, HC-14, HC-16
 
-chart-verifier verify https://github.com/openshift-helm-charts/development/blob/main/tests/data/vault-0.17.0.tgz?raw=true --set profile.vendorType=redhat > report.yaml
-Copy report.yaml to tests/data/common/redhat/
-
-chart-verifier verify https://github.com/openshift-helm-charts/development/blob/main/tests/data/vault-0.17.0.tgz?raw=true --set profile.vendorType=community > report.yaml
-Copy report.yaml to tests/data/common/community/
+```bash
+for i in community redhat partner; do
+    chart-verifier verify https://github.com/openshift-helm-charts/development/blob/main/tests/data/hc-e2e-vault-0.17.0.tgz?raw=true --set profile.vendorType=${i} | tee tests/data/common/${i}/report.yaml; 
+done
 
 ```
 
-### HC-04
+##2 HC-04
 
-```
-chart-verifier verify tests/data/common/vault-0.17.0.tgz > report.yaml
-Copy report.yaml to tests/data/HC-04/partner/
-
-chart-verifier verify tests/data/common/vault-0.17.0.tgz --set profile.vendorType=redhat > report.yaml
-Copy report.yaml to tests/data/HC-04/redhat/
-
-chart-verifier verify tests/data/common/vault-0.17.0.tgz --set profile.vendorType=community > report.yaml
-Copy report.yaml to tests/data/HC-04/community/
+```bash
+for i in community redhat partner; do
+    chart-verifier verify tests/data/hc-e2e-vault-0.17.0.tgz --set profile.vendorType=${i} | tee tests/data/HC-04/${i}/report.yaml; 
+done
 ```
 
 ### HC-06
 
-```
-chart-verifier verify https://github.com/openshift-helm-charts/development/blob/main/tests/data/vault-0.17.0.tgz?raw=true --web-catalog-only > report.yaml
-Copy report.yaml to tests/data/HC-06/partner/
+```bash
+chart-verifier verify https://github.com/openshift-helm-charts/development/blob/main/tests/data/hc-e2e-vault-0.17.0.tgz?raw=true --web-catalog-only | tee tests/data/HC-06/partner/report.yaml
 ```
 
 ### HC-09
 
-```
-chart-verifier verify https://github.com/openshift-helm-charts/development/blob/main/tests/data/vault-0.17.0.tgz?raw=true -o json | jq . > report.json
-Copy report.json to tests/data/HC-09/partner/
-
-chart-verifier verify https://github.com/openshift-helm-charts/development/blob/main/tests/data/vault-0.17.0.tgz?raw=true --set profile.vendorType=redhat -o json | jq . > report.json
-Copy report.json to tests/data/HC-09/redhat/
-
-chart-verifier verify https://github.com/openshift-helm-charts/development/blob/main/tests/data/vault-0.17.0.tgz?raw=true --set profile.vendorType=community -o json | jq . > report.json
-Copy report.json to tests/data/HC-09/community/
+```bash
+for i in community redhat partner; do
+    chart-verifier verify https://github.com/openshift-helm-charts/development/blob/main/tests/data/hc-e2e-vault-0.17.0.tgz?raw=true --set profile.vendorType=${i} -o json | jq | tee tests/data/HC-09/${i}/report.json; 
+done
 ```
 
 ### HC-11
 
-```
-chart-verifier verify https://github.com/openshift-helm-charts/development/blob/main/tests/data/vault-0.17.0.tgz?raw=true -x helm-lint > report.yaml
-Copy report.yaml to tests/data/HC-11/partner/
-
-chart-verifier verify https://github.com/openshift-helm-charts/development/blob/main/tests/data/vault-0.17.0.tgz?raw=true -x not-contains-crds > report.yaml
-Copy report.yaml to tests/data/HC-11/partner_not_contain_crds/
-
-chart-verifier verify https://github.com/openshift-helm-charts/development/blob/main/tests/data/vault-0.17.0.tgz?raw=true --set profile.vendorType=community -x helm-lint > report.yaml
-Copy report.yaml to tests/data/HC-11/community/
+```bash
+chart-verifier verify https://github.com/openshift-helm-charts/development/blob/main/tests/data/hc-e2e-vault-0.17.0.tgz?raw=true -x helm-lint | tee tests/data/HC-11/partner/report.yaml
+chart-verifier verify https://github.com/openshift-helm-charts/development/blob/main/tests/data/hc-e2e-vault-0.17.0.tgz?raw=true -x not-contains-crds | tee tests/data/HC-11/partner_not_contain_crds/report.yaml
+chart-verifier verify https://github.com/openshift-helm-charts/development/blob/main/tests/data/hc-e2e-vault-0.17.0.tgz?raw=true --set profile.vendorType=community -x helm-lint | tee tests/data/HC-11/community/report.yaml
 ```
 
 ### HC-17
 
-```
-chart-verifier verify https://github.com/openshift-helm-charts/development/blob/main/tests/data/psql-service-0.1.10-1.tgz?raw=true > report.yaml
-Copy report.yaml to tests/data/HC-17/dash-in-version/partner/
-
-chart-verifier verify https://github.com/openshift-helm-charts/development/blob/main/tests/data/psql-service-0.1.10-1.tgz?raw=true --set profile.vendorType=redhat > report.yaml
-Copy report.yaml to tests/data/HC-17/dash-in-version/redhat/
+```bash
+chart-verifier verify https://github.com/openshift-helm-charts/development/blob/main/tests/data/hc-e2e-psql-svc-0.1.10-1.tgz?raw=true | tee tests/data/HC-17/dash-in-version/partner/report.yaml
+chart-verifier verify https://github.com/openshift-helm-charts/development/blob/main/tests/data/hc-e2e-psql-svc-0.1.10-1.tgz?raw=true --set profile.vendorType=redhat | tee tests/data/HC-17/dash-in-version/redhat/report.yaml
 ```
 
 ### HC-18
 
-```
-chart-verifier verify https://github.com/openshift-helm-charts/development/blob/main/tests/data/vault-0.18.0.tgz?raw=true  > report.yaml
-Copy report.yaml to tests/data/HC-18/partner/
-
-chart-verifier verify https://github.com/openshift-helm-charts/development/blob/main/tests/data/vault-0.18.0.tgz?raw=true  --set profile.vendorType=redhat > report.yaml
-Copy report.yaml to tests/data/HC-18/redhat/
-
-chart-verifier verify https://github.com/openshift-helm-charts/development/blob/main/tests/data/vault-0.18.0.tgz?raw=true  --set profile.vendorType=community > report.yaml
-Copy report.yaml to tests/data/HC-18/community/
-
+```bash
+for i in community redhat partner; do
+    chart-verifier verify https://github.com/openshift-helm-charts/development/blob/main/tests/data/hc-e2e-vault-next-0.18.0.tgz?raw=true --set profile.vendorType=${i} | tee tests/data/HC-18/${i}/report.json; 
+done
 ```
 
 ### HC-19
 
-```
-chart-verifier verify https://github.com/openshift-helm-charts/development/blob/main/tests/data/vault-0.17.0.tgz?raw=true > report.yaml
-Copy report.yaml to tests/data/HC-19/report_sha_good/
-Also modify the testedOpenShiftVersion value in report.yaml and copy to tests/data/HC-19/report_edited_sha_bad/
+!! Manual steps here
 
-chart-verifier verify https://github.com/openshift-helm-charts/development/blob/main/tests/data/vault-0.17.0.tgz?raw=true > report.yaml
-Modify the reportDigest value itself in report.yaml and copy to tests/data/HC-19/report_sha_bad/
+```bash
+# Modify the testedOpenShiftVersion value in report.yaml
+chart-verifier verify https://github.com/openshift-helm-charts/development/blob/main/tests/data/hc-e2e-vault-0.17.0.tgz?raw=true | tee tests/data/HC-19/report_sha_good/report.yaml
+# Modify the reportDigest value itself in report.yaml
+chart-verifier verify https://github.com/openshift-helm-charts/development/blob/main/tests/data/hc-e2e-vault-0.17.0.tgz?raw=true | tee tests/data/HC-19/report_sha_bad/report.yaml
 
 ```
 
 ### HC-10
 
+TODO: Automate this process using a container to generate throwaway keys.
+
+Untar the signed chart for modification, and move existing chart and provenance out of the way.
+```bash
+tar xzvf tests/data/HC-10/signed_chart/hc-e2e-signed-vault-0.17.0.tgz -C tests/data/HC-10/signed_chart/
+mv tests/data/HC-10/signed_chart/hc-e2e-signed-vault-0.17.0.tgz{,.bak}
+mv tests/data/HC-10/signed_chart/hc-e2e-signed-vault-0.17.0.tgz.prov{,.bak}
 ```
-Unpack the unsigned vault-0.17.0.tgz into vault/ directory
 
-Sign the chart using your private key and package it using below cmd:
-$ helm package --sign --key 'Sushanta Das' --keyring /home/susdas/.gnupg/secring.gpg vault/
-Password for key "Sushanta Das (Key generated in loaner laptop) <susdas@redhat.com>" >  
-Successfully packaged chart and saved it to: /home/susdas/go/src/github.com/tisutisu/development/tests/data/HC-10/signed_chart/vault-0.17.0.tgz
-$ 
+Make modifications, then re-sign the chart.
 
-Verify the resulting chart tar and .prov file should be under tests/data/HC-10/signed_chart
+```bash
+cd tests/data/HC-10/signed_chart/
+helm package --sign --key 'hc-e2e-ci-throwaway' --keyring $HOME/.gnupg/secring.gpg hc-e2e-signed-vault
+ # Response E.g.:
+ # Password for key "hc-e2e-ci-throwaway <throwaway@example.com>" >  
+ # Successfully packaged chart and saved it to: <path-to-chart>
+```
+
+Verify (`helm verify`) the resulting chart tar and .prov file should be under tests/data/HC-10/signed_chart
 
 Also generate your public key and copy it into the same tests/data/HC-10/signed_chart directory using below cmd:
-gpg --export -a susdas@redhat.com > public_key_good.asc
-
-
-chart-verifier verify https://github.com/openshift-helm-charts/development/blob/main/tests/data/HC-10/signed_chart/vault-0.17.0.tgz?raw=true -k tests/data/HC-10/signed_chart/public_key_good.asc > report.yaml
-Copy report.yaml to tests/data/HC-10/signed_chart/report/partner/
-
-chart-verifier verify https://github.com/openshift-helm-charts/development/blob/main/tests/data/HC-10/signed_chart/vault-0.17.0.tgz?raw=true -k tests/data/HC-10/signed_chart/public_key_good.asc --set profile.vendorType=redhat > report.yaml
-Copy report.yaml to tests/data/HC-10/signed_chart/report/redhat/
-
+```bash
+gpg --export --armour hc-e2e-ci-throwaway > public_key_good.asc
 ```
 
+Then generate reports
+
+```bash
+chart-verifier verify https://github.com/openshift-helm-charts/development/blob/main/tests/data/HC-10/signed_chart/hc-e2e-signed-vault-0.17.0.tgz?raw=true -k tests/data/HC-10/signed_chart/public_key_good.asc | tee tests/data/HC-10/signed_chart/report/partner/report.yaml
+chart-verifier verify https://github.com/openshift-helm-charts/development/blob/main/tests/data/HC-10/signed_chart/hc-e2e-signed-vault-0.17.0.tgz?raw=true -k tests/data/HC-10/signed_chart/public_key_good.asc --set profile.vendorType=redhat | tee tests/data/HC-10/signed_chart/report/redhat/report.yaml
+```

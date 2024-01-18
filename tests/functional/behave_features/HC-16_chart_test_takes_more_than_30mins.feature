@@ -11,12 +11,12 @@ Feature: Chart test takes longer time and exceeds default timeout
     @partners @full
     Examples:
       | vendor_type  | vendor    | chart_path                                  | message                                                      |
-      | partners     | hashicorp | tests/data/vault-test-timeout-0.17.0.tgz    | (timeout has expired\|timed out waiting for the condition)  |
+      | partners     | hashicorp | tests/data/hc-e2e-tt-vault-0.17.0.tgz    | (timeout has expired\|timed out waiting for the condition)  |
     
     @community @full
     Examples:
       | vendor_type  | vendor    | chart_path                                  | message                                                                                     |
-      | community    | redhat    | tests/data/vault-test-timeout-0.17.0.tgz    | Community charts require maintainer review and approval, a review will be conducted shortly |
+      | community    | redhat    | tests/data/hc-e2e-tt-vault-0.17.0.tgz    | Community charts require maintainer review and approval, a review will be conducted shortly |
   
   Scenario Outline: [HC-16-002] A redhat associate submits a chart that takes more than 30 mins
         Given the vendor "<vendor>" has a valid identity as "<vendor_type>"
@@ -29,5 +29,5 @@ Feature: Chart test takes longer time and exceeds default timeout
     @redhat @full
     Examples:
       | vendor_type | vendor | chart_path                                  | 
-      | redhat      | redhat | tests/data/vault-test-timeout-0.17.0.tgz    | 
+      | redhat      | redhat | tests/data/hc-e2e-tt-vault-0.17.0.tgz    | 
 

@@ -29,7 +29,7 @@ Feature: Report only submission with provider control settings
     @partners @full
     Examples:
       | vendor_type  | vendor    | chart_path                  | report_path                          | provider_control_owners | message                                                                                              |
-      | partners     | hashicorp | tests/data/vault-0.17.0.tgz | tests/data/HC-06/partner/report.yaml | true                    | The web catalog distribution method requires the pull request to be report only. |
+      | partners     | hashicorp | tests/data/hc-e2e-vault-0.17.0.tgz | tests/data/HC-06/partner/report.yaml | true                    | The web catalog distribution method requires the pull request to be report only. |
 
   @external-feedback
   Scenario Outline: [HC-06-003] A partner associate submits an error-free report with inconsistent provider controlled delivery setting

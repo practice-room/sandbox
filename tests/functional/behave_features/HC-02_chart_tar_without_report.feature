@@ -13,12 +13,12 @@ Feature: Chart tarball submission without report
         @partners @full
         Examples:
             | vendor_type  | vendor    | chart_path                   |
-            | partners     | hashicorp | tests/data/vault-0.17.0.tgz  |
+            | partners     | hashicorp | tests/data/hc-e2e-vault-0.17.0.tgz  |
         
         @redhat @smoke @full
         Examples:
             | vendor_type  | vendor    | chart_path                   |
-            | redhat       | redhat    | tests/data/vault-0.17.0.tgz  |
+            | redhat       | redhat    | tests/data/hc-e2e-vault-0.17.0.tgz  |
 
     Scenario Outline: [HC-02-002] A community user submits an error-free chart tarball without report
         Given the vendor "<vendor>" has a valid identity as "<vendor_type>"
@@ -30,4 +30,4 @@ Feature: Chart tarball submission without report
         @community @full
         Examples:
             | vendor_type   | vendor    | chart_path                   | message                                                                                     |
-            | community     | redhat    | tests/data/vault-0.17.0.tgz  | Community charts require maintainer review and approval, a review will be conducted shortly |
+            | community     | redhat    | tests/data/hc-e2e-vault-0.17.0.tgz  | Community charts require maintainer review and approval, a review will be conducted shortly |

@@ -12,14 +12,14 @@ Feature: PR includes a non chart related file
     @partners @smoke @full
     Examples:
         | vendor_type  | vendor    | chart_path                  | message                                             |
-        | partners     | hashicorp | tests/data/vault-0.17.0.tgz | PR includes one or more files not related to charts |
+        | partners     | hashicorp | tests/data/hc-e2e-vault-0.17.0.tgz | PR includes one or more files not related to charts |
     
     @redhat @full
     Examples:
         | vendor_type  | vendor    | chart_path                  | message                                             |
-        | redhat       | redhat    | tests/data/vault-0.17.0.tgz | PR includes one or more files not related to charts |
+        | redhat       | redhat    | tests/data/hc-e2e-vault-0.17.0.tgz | PR includes one or more files not related to charts |
     
     @community @full
     Examples:
         | vendor_type  | vendor    | chart_path                  | message                                             |
-        | community    | redhat    | tests/data/vault-0.17.0.tgz | PR includes one or more files not related to charts |
+        | community    | redhat    | tests/data/hc-e2e-vault-0.17.0.tgz | PR includes one or more files not related to charts |

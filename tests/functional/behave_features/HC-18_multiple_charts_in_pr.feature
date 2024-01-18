@@ -34,17 +34,17 @@ Feature: Multiple charts submission in one PR
         @partners @full
         Examples:
             | vendor_type  | vendor    | chart_path_1                | chart_path_2                | message                                                                         |
-            | partners     | hashicorp | tests/data/vault-0.17.0.tgz | tests/data/vault-0.18.0.tgz | A PR must contain only one chart. Current PR includes files for multiple charts |
+            | partners     | hashicorp | tests/data/hc-e2e-vault-0.17.0.tgz | tests/data/hc-e2e-vault-next-0.18.0.tgz | A PR must contain only one chart. Current PR includes files for multiple charts |
         
         @redhat @full
         Examples:
             | vendor_type  | vendor    | chart_path_1                | chart_path_2                | message                                                                         |
-            | redhat       | redhat    | tests/data/vault-0.17.0.tgz | tests/data/vault-0.18.0.tgz | A PR must contain only one chart. Current PR includes files for multiple charts |
+            | redhat       | redhat    | tests/data/hc-e2e-vault-0.17.0.tgz | tests/data/hc-e2e-vault-next-0.18.0.tgz | A PR must contain only one chart. Current PR includes files for multiple charts |
         
         @community @full
         Examples:
             | vendor_type  | vendor    | chart_path_1                | chart_path_2                | message                                                                         |
-            | community    | redhat    | tests/data/vault-0.17.0.tgz | tests/data/vault-0.18.0.tgz | A PR must contain only one chart. Current PR includes files for multiple charts |
+            | community    | redhat    | tests/data/hc-e2e-vault-0.17.0.tgz | tests/data/hc-e2e-vault-next-0.18.0.tgz | A PR must contain only one chart. Current PR includes files for multiple charts |
 
     Scenario Outline: [HC-18-003] A user submits a PR with multiple chart tars
         Given the vendor "<vendor>" has a valid identity as "<vendor_type>"
@@ -56,17 +56,17 @@ Feature: Multiple charts submission in one PR
         @partners @full
         Examples:
             | vendor_type  | vendor    | chart_path_1                | chart_path_2                | message                                                                         |
-            | partners     | hashicorp | tests/data/vault-0.17.0.tgz | tests/data/vault-0.18.0.tgz | A PR must contain only one chart. Current PR includes files for multiple charts |
+            | partners     | hashicorp | tests/data/hc-e2e-vault-0.17.0.tgz | tests/data/hc-e2e-vault-next-0.18.0.tgz | A PR must contain only one chart. Current PR includes files for multiple charts |
         
         @redhat @full @smoke
         Examples:
             | vendor_type  | vendor    | chart_path_1                | chart_path_2                | message                                                                         |
-            | redhat       | redhat    | tests/data/vault-0.17.0.tgz | tests/data/vault-0.18.0.tgz | A PR must contain only one chart. Current PR includes files for multiple charts |
+            | redhat       | redhat    | tests/data/hc-e2e-vault-0.17.0.tgz | tests/data/hc-e2e-vault-next-0.18.0.tgz | A PR must contain only one chart. Current PR includes files for multiple charts |
         
         @community @full
         Examples:
             | vendor_type  | vendor    | chart_path_1                | chart_path_2                | message                                                                         |
-            | community    | redhat    | tests/data/vault-0.17.0.tgz | tests/data/vault-0.18.0.tgz | A PR must contain only one chart. Current PR includes files for multiple charts |
+            | community    | redhat    | tests/data/hc-e2e-vault-0.17.0.tgz | tests/data/hc-e2e-vault-next-0.18.0.tgz | A PR must contain only one chart. Current PR includes files for multiple charts |
     
     Scenario Outline: [HC-18-004] A user submits a PR with multiple chart one with source and other with report
         Given the vendor "<vendor>" has a valid identity as "<vendor_type>"
@@ -78,17 +78,17 @@ Feature: Multiple charts submission in one PR
         @partners @full
         Examples:
             | vendor_type  | vendor    | chart_path                  | report_path                          | message                                                                         |
-            | partners     | hashicorp | tests/data/vault-0.17.0.tgz | tests/data/HC-18/partner/report.yaml | A PR must contain only one chart. Current PR includes files for multiple charts |
+            | partners     | hashicorp | tests/data/hc-e2e-vault-0.17.0.tgz | tests/data/HC-18/partner/report.yaml | A PR must contain only one chart. Current PR includes files for multiple charts |
         
         @redhat @full
         Examples:
             | vendor_type  | vendor    | chart_path                  | report_path                         | message                                                                         |
-            | redhat       | redhat    | tests/data/vault-0.17.0.tgz | tests/data/HC-18/redhat/report.yaml | A PR must contain only one chart. Current PR includes files for multiple charts |
+            | redhat       | redhat    | tests/data/hc-e2e-vault-0.17.0.tgz | tests/data/HC-18/redhat/report.yaml | A PR must contain only one chart. Current PR includes files for multiple charts |
         
         @community @full @smoke
         Examples:
             | vendor_type  | vendor    | chart_path                  | report_path                            | message                                                                         |
-            | community    | redhat    | tests/data/vault-0.17.0.tgz | tests/data/HC-18/community/report.yaml | A PR must contain only one chart. Current PR includes files for multiple charts |
+            | community    | redhat    | tests/data/hc-e2e-vault-0.17.0.tgz | tests/data/HC-18/community/report.yaml | A PR must contain only one chart. Current PR includes files for multiple charts |
 
     Scenario Outline: [HC-18-005] A user submits a PR with multiple chart one with tar and other with report
         Given the vendor "<vendor>" has a valid identity as "<vendor_type>"
@@ -100,14 +100,14 @@ Feature: Multiple charts submission in one PR
         @partners @full
         Examples:
             | vendor_type  | vendor    | chart_path                  | report_path                          | message                                                                         |
-            | partners     | hashicorp | tests/data/vault-0.17.0.tgz | tests/data/HC-18/partner/report.yaml | A PR must contain only one chart. Current PR includes files for multiple charts |
+            | partners     | hashicorp | tests/data/hc-e2e-vault-0.17.0.tgz | tests/data/HC-18/partner/report.yaml | A PR must contain only one chart. Current PR includes files for multiple charts |
         
         @redhat @full
         Examples:
             | vendor_type  | vendor    | chart_path                  | report_path                         | message                                                                         |
-            | redhat       | redhat    | tests/data/vault-0.17.0.tgz | tests/data/HC-18/redhat/report.yaml | A PR must contain only one chart. Current PR includes files for multiple charts |
+            | redhat       | redhat    | tests/data/hc-e2e-vault-0.17.0.tgz | tests/data/HC-18/redhat/report.yaml | A PR must contain only one chart. Current PR includes files for multiple charts |
         
         @community @full
         Examples:
             | vendor_type  | vendor    | chart_path                  | report_path                            | message                                                                         |
-            | community    | redhat    | tests/data/vault-0.17.0.tgz | tests/data/HC-18/community/report.yaml | A PR must contain only one chart. Current PR includes files for multiple charts |
+            | community    | redhat    | tests/data/hc-e2e-vault-0.17.0.tgz | tests/data/HC-18/community/report.yaml | A PR must contain only one chart. Current PR includes files for multiple charts |

@@ -12,12 +12,12 @@ Feature: Signed chart submission
         @partners @smoke @full
         Examples:
             | vendor_type  | vendor    | chart_path                                     | public_key_file                                   |
-            | partners     | hashicorp | tests/data/HC-10/signed_chart/vault-0.17.0.tgz | tests/data/HC-10/signed_chart/public_key_good.asc |
+            | partners     | hashicorp | tests/data/HC-10/signed_chart/hc-e2e-signed-vault-0.17.0.tgz | tests/data/HC-10/signed_chart/public_key_good.asc |
         
         @redhat @full
         Examples:
             | vendor_type  | vendor    | chart_path                                     | public_key_file                                   |
-            | redhat       | redhat    | tests/data/HC-10/signed_chart/vault-0.17.0.tgz | tests/data/HC-10/signed_chart/public_key_good.asc |
+            | redhat       | redhat    | tests/data/HC-10/signed_chart/hc-e2e-signed-vault-0.17.0.tgz | tests/data/HC-10/signed_chart/public_key_good.asc |
 
     Scenario Outline: [HC-10-002] A partner or redhat associate submits a signed chart tarball with report
         Given the vendor "<vendor>" has a valid identity as "<vendor_type>"
@@ -30,12 +30,12 @@ Feature: Signed chart submission
         @partners @full
         Examples:
             | vendor_type  | vendor    | chart_path                                     | report_path                                              | public_key_file                                   |
-            | partners     | hashicorp | tests/data/HC-10/signed_chart/vault-0.17.0.tgz | tests/data/HC-10/signed_chart/report/partner/report.yaml | tests/data/HC-10/signed_chart/public_key_good.asc |
+            | partners     | hashicorp | tests/data/HC-10/signed_chart/hc-e2e-signed-vault-0.17.0.tgz | tests/data/HC-10/signed_chart/report/partner/report.yaml | tests/data/HC-10/signed_chart/public_key_good.asc |
         
         @redhat @full
         Examples:
             | vendor_type  | vendor    | chart_path                                     | report_path                                             | public_key_file                                   |
-            | redhat       | redhat    | tests/data/HC-10/signed_chart/vault-0.17.0.tgz | tests/data/HC-10/signed_chart/report/redhat/report.yaml | tests/data/HC-10/signed_chart/public_key_good.asc |
+            | redhat       | redhat    | tests/data/HC-10/signed_chart/hc-e2e-signed-vault-0.17.0.tgz | tests/data/HC-10/signed_chart/report/redhat/report.yaml | tests/data/HC-10/signed_chart/public_key_good.asc |
     
     Scenario Outline: [HC-10-003] A partner or redhat associate submits a signed chart report
         Given the vendor "<vendor>" has a valid identity as "<vendor_type>"
@@ -66,12 +66,12 @@ Feature: Signed chart submission
         @partners @full
         Examples:
             | vendor_type  | vendor    | chart_path                  | public_key_file                                   |
-            | partners     | hashicorp | tests/data/vault-0.17.0.tgz | tests/data/HC-10/signed_chart/public_key_good.asc |
+            | partners     | hashicorp | tests/data/hc-e2e-vault-0.17.0.tgz | tests/data/HC-10/signed_chart/public_key_good.asc |
         
         @redhat @full
         Examples:
             | vendor_type  | vendor    | chart_path                  | public_key_file                                   |
-            | redhat       | redhat    | tests/data/vault-0.17.0.tgz | tests/data/HC-10/signed_chart/public_key_good.asc |
+            | redhat       | redhat    | tests/data/hc-e2e-vault-0.17.0.tgz | tests/data/HC-10/signed_chart/public_key_good.asc |
     
     Scenario Outline: [HC-10-005] A partner or redhat associate submits a signed chart tarball when public key is not in owners
         Given the vendor "<vendor>" has a valid identity as "<vendor_type>"
@@ -84,12 +84,12 @@ Feature: Signed chart submission
         @partners @full
         Examples:
             | vendor_type  | vendor    | chart_path                                     | 
-            | partners     | hashicorp | tests/data/HC-10/signed_chart/vault-0.17.0.tgz | 
+            | partners     | hashicorp | tests/data/HC-10/signed_chart/hc-e2e-signed-vault-0.17.0.tgz | 
         
         @redhat @full
         Examples:
             | vendor_type  | vendor    | chart_path                                     | 
-            | redhat       | redhat    | tests/data/HC-10/signed_chart/vault-0.17.0.tgz |
+            | redhat       | redhat    | tests/data/HC-10/signed_chart/hc-e2e-signed-vault-0.17.0.tgz |
     
     Scenario Outline: [HC-10-006] A partner or redhat associate submits a signed chart tarball with wrong key in OWNERS file
         Given the vendor "<vendor>" has a valid identity as "<vendor_type>"
@@ -101,11 +101,11 @@ Feature: Signed chart submission
         @partners @smoke @full
         Examples:
             | vendor_type  | vendor    | chart_path                                     | public_key_file                                  | message                       |
-            | partners     | hashicorp | tests/data/HC-10/signed_chart/vault-0.17.0.tgz | tests/data/HC-10/signed_chart/public_key_bad.asc | Signature verification failed |
+            | partners     | hashicorp | tests/data/HC-10/signed_chart/hc-e2e-signed-vault-0.17.0.tgz | tests/data/HC-10/signed_chart/public_key_bad.asc | Signature verification failed |
         
         # @redhat @full
         # Examples:
         #     | vendor_type  | vendor    | chart_path                                     | public_key_file                                  | message                       | 
-        #     | redhat       | redhat    | tests/data/HC-10/signed_chart/vault-0.17.0.tgz | tests/data/HC-10/signed_chart/public_key_bad.asc | Signature verification failed |
+        #     | redhat       | redhat    | tests/data/HC-10/signed_chart/hc-e2e-signed-vault-0.17.0.tgz | tests/data/HC-10/signed_chart/public_key_bad.asc | Signature verification failed |
 
 

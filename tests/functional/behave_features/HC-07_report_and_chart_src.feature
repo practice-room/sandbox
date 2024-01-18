@@ -13,12 +13,12 @@ Feature: Chart source submission with report
         @partners @smoke @full
         Examples:
             | vendor_type  | vendor    | chart_path                  | report_path                           |
-            | partners     | hashicorp | tests/data/vault-0.17.0.tgz | tests/data/common/partner/report.yaml |
+            | partners     | hashicorp | tests/data/hc-e2e-vault-0.17.0.tgz | tests/data/common/partner/report.yaml |
         
         @redhat @full
         Examples:
             | vendor_type  | vendor    | chart_path                  | report_path                          |
-            | redhat       | redhat    | tests/data/vault-0.17.0.tgz | tests/data/common/redhat/report.yaml |
+            | redhat       | redhat    | tests/data/hc-e2e-vault-0.17.0.tgz | tests/data/common/redhat/report.yaml |
 
     Scenario Outline: [HC-07-002] A community user submits an error-free chart source with report
         Given the vendor "<vendor>" has a valid identity as "<vendor_type>"
@@ -30,4 +30,4 @@ Feature: Chart source submission with report
         @community @smoke @full
         Examples:
             | vendor_type | vendor  | chart_path                  | report_path                             | message                                                                                     |
-            | community   | redhat  | tests/data/vault-0.17.0.tgz | tests/data/common/community/report.yaml | Community charts require maintainer review and approval, a review will be conducted shortly |
+            | community   | redhat  | tests/data/hc-e2e-vault-0.17.0.tgz | tests/data/common/community/report.yaml | Community charts require maintainer review and approval, a review will be conducted shortly |

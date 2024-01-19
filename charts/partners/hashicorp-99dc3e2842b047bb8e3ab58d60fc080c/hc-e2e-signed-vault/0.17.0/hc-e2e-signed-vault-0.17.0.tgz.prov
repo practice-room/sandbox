@@ -1,0 +1,36 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+annotations:
+  charts.openshift.io/name: vault
+apiVersion: v2
+appVersion: 1.8.4
+description: Official HashiCorp Vault Chart
+home: https://www.vaultproject.io
+icon: https://github.com/hashicorp/vault/raw/f22d202cde2018f9455dec755118a9b84586e082/Vault_PrimaryLogo_Black.png
+keywords:
+- - vault
+- - security
+- - encryption
+- - secrets
+- - management
+- - automation
+- - infrastructure
+kubeVersion: '>= 1.14.0-0'
+name: hc-e2e-signed-vault
+sources:
+- - https://github.com/hashicorp/vault
+- - https://github.com/hashicorp/vault-helm
+- - https://github.com/hashicorp/vault-k8s
+- - https://github.com/hashicorp/vault-csi-provider
+version: 0.17.0
+
+...
+files:
+  hc-e2e-signed-vault-0.17.0.tgz: sha256:a03e341e4459a43a081e2b2864a61da11f33397df36d4ecd4731a9f3280d570c
+-----BEGIN PGP SIGNATURE-----
+
+wl4EAREKABAFAmWpk1gJEEK674ZW1MpNAADm3QEAL7govss73e+VCSJCHio9rD9Y
+3b1/SguwG141aMJ2YkABAO7J4scykQXajG6S8C/w8NZL+3TaBmnDRl0gLDIOyQ0R
+=vV0d
+-----END PGP SIGNATURE-----

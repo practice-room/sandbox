@@ -1,3 +1,4 @@
+@hc-10 @signed-chart
 Feature: Signed chart submission
     Partners or redhat users can publish their signed chart
 

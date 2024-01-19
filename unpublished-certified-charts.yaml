@@ -1,0 +1,36 @@
+apiVersion: v1
+entries:
+  hc-e2e-vault:
+  - annotations:
+      charts.openshift.io/digest: sha256:387569953f54e6af080547b9c298af8725e85fb31801ab5baffc18140a03d6a9
+      charts.openshift.io/lastCertifiedTimestamp: '2024-01-18T15:46:04.8456-06:00'
+      charts.openshift.io/name: vault
+      charts.openshift.io/providerType: partner
+      charts.openshift.io/submissionTimestamp: '2024-01-19T16:26:10.519861+00:00'
+      charts.openshift.io/supportedOpenShiftVersions: '>=4.2'
+      charts.openshift.io/testedOpenShiftVersion: '4.12'
+    apiVersion: v2
+    appVersion: 1.8.4
+    description: Official HashiCorp Vault Chart
+    digest: d822d74c7eada5bf4fc0824425ec05ef9a8e67e1de4c92bdac982b612ae7dd74
+    home: https://www.vaultproject.io
+    icon: https://github.com/hashicorp/vault/raw/f22d202cde2018f9455dec755118a9b84586e082/Vault_PrimaryLogo_Black.png
+    keywords:
+    - vault
+    - security
+    - encryption
+    - secrets
+    - management
+    - automation
+    - infrastructure
+    kubeVersion: '>= 1.14.0-0'
+    name: hc-e2e-vault
+    sources:
+    - https://github.com/hashicorp/vault
+    - https://github.com/hashicorp/vault-helm
+    - https://github.com/hashicorp/vault-k8s
+    - https://github.com/hashicorp/vault-csi-provider
+    urls:
+    - N/A
+    version: 0.17.0
+generated: '2024-01-19T16:26:10.519823+00:00'

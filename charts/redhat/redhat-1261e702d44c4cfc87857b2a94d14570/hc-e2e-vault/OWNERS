@@ -1,0 +1,10 @@
+chart:
+  name: hc-e2e-vault
+  shortDescription: Test chart for testing chart submission workflows.
+publicPgpKey: null
+providerDelivery: False
+users:
+- githubUsername: komish
+vendor:
+  label: redhat-1261e702d44c4cfc87857b2a94d14570
+  name: redhat-1261e702d44c4cfc87857b2a94d14570

@@ -1,0 +1,10 @@
+chart:
+  name: hc-e2e-vault
+  shortDescription: Test chart for testing chart submission workflows.
+publicPgpKey: null
+providerDelivery: False
+users:
+- githubUsername: komish
+vendor:
+  label: hashicorp-cb2263f8eec446cea69ae9ed99beda71
+  name: hashicorp-cb2263f8eec446cea69ae9ed99beda71

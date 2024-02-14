@@ -1,7 +1,8 @@
+@HC-19
 Feature: Report sha value in report
   Users attempt to publish their chart by submitting report with a report sha value.
   The sha value must match the report.
-
+  
   Scenario Outline: [HC-19-001] A partner or redhat associate submits an error-free report with report sha value
     Given the vendor "<vendor>" has a valid identity as "<vendor_type>"
     And an error-free report is used in "<report_path>"

@@ -8,7 +8,6 @@ from retrying import retry
 
 from common.utils.setttings import *
 
-
 @retry(stop_max_delay=30_000, wait_fixed=1000)
 def get_run_id(secrets, workflow_name: str, pr_number: str = None):
     """Queries the GitHub API for the ID of the workflow run associated with a PR.

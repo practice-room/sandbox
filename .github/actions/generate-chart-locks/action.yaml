@@ -20,7 +20,7 @@ inputs:
       The path to the generate-chart-locks command. This action expects CI
       scripts to be installed by the caller, and so it stands to reason the
       caller may install scripts at various locations.
-    default: "ve1/bin/generate-chart-locks"
+    default: "../ve1/bin/generate-chart-locks"
     required: false
 outputs:
   lockfile-path:

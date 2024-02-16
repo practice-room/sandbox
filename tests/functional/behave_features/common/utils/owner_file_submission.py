@@ -246,7 +246,6 @@ class OwnersFileSubmissionsE2ETest:
 
         Pull requests created with this method are not tracked for cleanup.
         When related branches are deleted, GitHub will automatically close the PR.
-
         Args:
             remote_repo: the org/repo string where the PR should be pushed.
             base_branch: the branch receiving the PR.

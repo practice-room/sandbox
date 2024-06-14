@@ -11,6 +11,7 @@ def get_bot_name_and_token():
     logging.debug(f"Enviroment variable value BOT_NAME: {bot_name}")
     bot_token = os.environ.get("BOT_TOKEN")
     if not bot_name and not bot_token:
+        logging.debug("!!! falling back to github-actions[bot] !!!")
         bot_name = "github-actions[bot]"
         bot_token = os.environ.get("GITHUB_TOKEN")
         if not bot_token:

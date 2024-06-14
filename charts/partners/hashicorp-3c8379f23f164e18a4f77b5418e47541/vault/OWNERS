@@ -1,0 +1,10 @@
+chart:
+  name: vault
+  shortDescription: Test chart for testing chart submission workflows.
+publicPgpKey: null
+providerDelivery: False
+users:
+- githubUsername: komish
+vendor:
+  label: hashicorp-3c8379f23f164e18a4f77b5418e47541
+  name: hashicorp-3c8379f23f164e18a4f77b5418e47541

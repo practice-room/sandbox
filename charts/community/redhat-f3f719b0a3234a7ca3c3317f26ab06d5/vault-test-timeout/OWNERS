@@ -1,0 +1,10 @@
+chart:
+  name: vault-test-timeout
+  shortDescription: Test chart for testing chart submission workflows.
+publicPgpKey: null
+providerDelivery: False
+users:
+- githubUsername: komish
+vendor:
+  label: redhat-f3f719b0a3234a7ca3c3317f26ab06d5
+  name: redhat-f3f719b0a3234a7ca3c3317f26ab06d5

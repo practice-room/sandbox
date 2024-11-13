@@ -1,0 +1,19 @@
+name: Test Workflow
+description: Tests the Certification Workflow
+# inputs:
+  # kube-version-range:
+  #   description: 'Range of Kubernetes versions'
+  #   required: true
+# outputs:
+  # ocp-version-range:
+  #   description: "Corresponsing range of OCP versions"
+  #   value: ${{ steps.run-get-ocp-range.outputs.ocp-version-range }}
+runs:
+  using: "composite"
+  steps:
+    - name: Print Environment
+      shell: bash
+      run: |
+        set -x
+        echo "Printing FOO"
+        echo $FOO

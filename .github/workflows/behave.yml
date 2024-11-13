@@ -1,0 +1,105 @@
+name: Behave Testing
+
+# Behave Testing will run the repository's Behave testing with each feature file
+# getting its own runner. All feature files found within the specific path are
+# included.
+
+on:
+  workflow_call:
+    inputs:
+      tags:
+        type: string
+        required: true
+        description: |
+          The behave tags to use. E.g "full". Multiple tags should be specified
+          separated by a comma, e.g. "owners,redhat".
+      pr-body:
+        type: string
+        required: true
+        description: |
+          Every pull request created by this automation will have this pr-body.
+      behave-logging-level:
+        type: string
+        required: false
+        default: WARNING
+        description: |
+          Value passed to behave's --logging-level flag.
+    secrets:
+      # NOTE(komish): Not technically secret, but must be listed as a secret
+      # because you can't pass the ${{ secrets }} context as an input in the
+      # calling workflow, and our repos have this configured as a secret.
+      bot-name:
+        required: true
+        description: |
+          The name of the GitHub user that will send pull requests.
+      # github-token:
+      #   description: TODO
+      #   required: true
+      bot-token:
+        description: |
+          A GitHub token for the bot user that will initiate pull 
+          requests for testing. Should NOT be set to GITHUB_TOKEN.
+        required: true
+# env:
+#   GITHUB_TOKEN: ${{ secrets.github-token }}
+jobs:
+  get-features:
+    runs-on: ubuntu-latest
+    outputs:
+      features: ${{ steps.find-features.outputs.features }}
+    steps:
+      - name: Checkout Base Branch
+        uses: actions/checkout@v4
+      - name: find features
+        id: find-features
+        run: |
+          cd tests/functional/behave_features
+          echo features=$(find . -name '*.feature' | sed -e 's%\./%%g' | jq -R -s -c 'split("\n")[:-1]') | tee -a $GITHUB_OUTPUT
+  run-tests:
+    runs-on: ubuntu-latest
+    needs: [get-features]
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix: 
+        feature-file: ${{ fromJson(needs.get-features.outputs.features) }}
+    steps:
+      - name: Checkout Base Branch
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.bot-token }}
+          fetch-depth: 0
+
+      - name: Set up Python 3
+        uses: ./.github/actions/setup-python
+
+      - name: Set up CI scripts
+        run: |
+          # set up python scripts
+          echo "set up python script in $PWD"
+          python3 -m venv ve1
+          cd scripts
+          ../ve1/bin/pip3 install -r requirements.txt
+          ../ve1/bin/pip3 install .
+          cd ..
+
+        # Pull request numbers are included in generated chart names in E2E, so it's included
+        # as an environment variable which E2E consumes.
+      - name: Populate PR_NUMBER environment variable
+        if: github.event_name == 'pull_request_target' || github.event_name == 'pull_request'
+        run: |
+          echo "PR_NUMBER=${{ github.event.pull_request.number }}" | tee $GITHUB_ENV
+      
+      - name: Run Tests
+        env:
+          GITHUB_TOKEN: ${{ secrets.github-token }}
+          BOT_NAME: ${{ secrets.bot-name }}
+          BOT_TOKEN: ${{ secrets.bot-token }}
+          PR_BODY: ${{ inputs.pr-body }}
+        run: |
+          ve1/bin/behave tests/functional/behave_features/ \
+            --include ${{ matrix.feature-file }} \
+            --tags=${{ inputs.tags }} \
+            --logging-level=${{ inputs.behave-logging-level }} \
+            --no-capture \
+            --no-color

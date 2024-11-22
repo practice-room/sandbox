@@ -39,4 +39,38 @@ entries:
     urls:
     - https://github.com/openshift-helm-charts/sandbox/releases/download/acme-psql-service-0.1.1/acme-psql-service-0.1.1.tgz
     version: 0.1.1
-generated: '2021-05-21T03:06:39.760924+00:00'
+  vault:
+  - annotations:
+      charts.openshift.io/digest: sha256:d075d16bb33bb33f66cc6fb8af5cce935b647972de4b4af49be385fcce7bed05
+      charts.openshift.io/lastCertifiedTimestamp: '2024-11-22T22:32:02.23666+00:00'
+      charts.openshift.io/name: vault
+      charts.openshift.io/provider: hashicorp-8b059715cbba4a7f9375343b979ab2c4-3
+      charts.openshift.io/providerType: partner
+      charts.openshift.io/submissionTimestamp: '2024-11-22T22:33:58.999320+00:00'
+      charts.openshift.io/supportedOpenShiftVersions: '>=4.2'
+      charts.openshift.io/testedOpenShiftVersion: '4.17'
+    apiVersion: v2
+    appVersion: 1.8.4
+    description: Official HashiCorp Vault Chart
+    digest: d45ff6582bfb6c88dde2550b229d2b65d2785bb546619f22e073a5c791157152
+    home: https://www.vaultproject.io
+    icon: https://github.com/hashicorp/vault/raw/f22d202cde2018f9455dec755118a9b84586e082/Vault_PrimaryLogo_Black.png
+    keywords:
+    - vault
+    - security
+    - encryption
+    - secrets
+    - management
+    - automation
+    - infrastructure
+    kubeVersion: '>= 1.14.0-0'
+    name: vault
+    sources:
+    - https://github.com/hashicorp/vault
+    - https://github.com/hashicorp/vault-helm
+    - https://github.com/hashicorp/vault-k8s
+    - https://github.com/hashicorp/vault-csi-provider
+    urls:
+    - https://github.com/practice-room/sandbox/releases/download/hashicorp-8b059715cbba4a7f9375343b979ab2c4-3-vault-0.17.0/vault-0.17.0.tgz
+    version: 0.17.0
+generated: '2024-11-22T22:33:58.998560+00:00'

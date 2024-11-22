@@ -1,0 +1,10 @@
+chart:
+  name: cryostat
+  shortDescription: Test chart for testing chart submission workflows.
+publicPgpKey: null
+providerDelivery: False
+users:
+- githubUsername: komish-impersonator
+vendor:
+  label: redhat-ae700b06a83849bfa470d3d8862b47dc
+  name: redhat-ae700b06a83849bfa470d3d8862b47dc

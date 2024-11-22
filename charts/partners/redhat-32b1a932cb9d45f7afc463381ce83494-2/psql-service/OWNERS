@@ -1,0 +1,10 @@
+chart:
+  name: psql-service
+  shortDescription: Test chart for testing chart submission workflows.
+publicPgpKey: null
+providerDelivery: False
+users:
+- githubUsername: komish-impersonator
+vendor:
+  label: redhat-32b1a932cb9d45f7afc463381ce83494-2
+  name: redhat-32b1a932cb9d45f7afc463381ce83494-2

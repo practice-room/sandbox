@@ -1,0 +1,10 @@
+chart:
+  name: vault-test-timeout
+  shortDescription: Test chart for testing chart submission workflows.
+publicPgpKey: null
+providerDelivery: False
+users:
+- githubUsername: komish-impersonator
+vendor:
+  label: hashicorp-8fb9935f16a347e296c37c8ebeaf1876-16
+  name: hashicorp-8fb9935f16a347e296c37c8ebeaf1876-16
